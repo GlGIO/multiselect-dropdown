@@ -222,16 +222,6 @@ class MultiSelectController<T> extends ChangeNotifier {
   // The [query] parameter is the search query.
   void _setSearchQuery(String query) {
     _searchQuery = query;
-    if (_searchQuery.isEmpty) {
-      _filteredItems = List.from(_items);
-    } else {
-      _filteredItems = _items
-          .where(
-            (item) =>
-                item.label.toLowerCase().contains(_searchQuery.toLowerCase()),
-          )
-          .toList();
-    }
     _onSearchChanged?.call(query);
     notifyListeners();
   }
