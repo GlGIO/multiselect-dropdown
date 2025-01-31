@@ -53,7 +53,10 @@ class MultiSelectController<T> extends ChangeNotifier {
     _items
       ..clear()
       ..addAll(options);
+    _filteredItems = _items;
+
     notifyListeners();
+
     _onSelectionChanged?.call(_selectedValues);
   }
 
@@ -72,6 +75,7 @@ class MultiSelectController<T> extends ChangeNotifier {
   /// Adds a list of dropdown items to the list of dropdown items.
   void addItems(List<DropdownItem<T>> options) {
     _items.addAll(options);
+    _filteredItems = _items;
     notifyListeners();
     _onSelectionChanged?.call(_selectedValues);
   }
